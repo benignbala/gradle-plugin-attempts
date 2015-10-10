@@ -1,0 +1,45 @@
+buildscript {
+  repositories {
+    jcenter()
+    maven {
+            url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "com.gradle.publish:plugin-publish-plugin:0.9.0"
+  }
+}
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin : 'com.gradle.plugin-publish'
+
+group = "org.fosstools.gradle"
+version = 0.1
+
+repositories {
+    jcenter()
+
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile gradleApi()
+    testCompile 'junit:junit:4.12'
+}
+
+archivesBaseName = "dpkg"
+
+pluginBundle {
+  description = 'This is a plugin for Gradle that allows invoking GNU Make builds'
+  website     = 'https://github.com/ysb33r/gnumake-gradle-plugin'
+  vcsUrl      = 'https://github.com/ysb33r/gnumake-gradle-plugin.git'
+
+  tags = ['GNU','gmake','make','gnumake']
+
+  plugins {
+    dpkgPackagePlugin {
+        id = 'dpkg'
+        displayName = 'Gradle Debian Packaging plugin'
+    }
+  }
+}

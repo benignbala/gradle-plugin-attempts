@@ -1,0 +1,11 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'org.fosstools.gradle:dpkg:0.1'
+  }
+}
+
+apply plugin: 'org.fosstools.gradle.dpkg'
